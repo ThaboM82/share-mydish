@@ -1,0 +1,427 @@
+//SASS autocompile
+
+@import "./variables";
+
+body {
+  background-color: $background-color;
+  font-family: $system-font;
+  font-size: $regular-size;
+  color: $font-color;
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  padding: $base;
+  width: 100vw;
+  max-width: 400px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.more-info {
+  display: flex;
+  justify-content: flex-end;
+  color: $accent-yellow;
+  font-size: $h4-size;
+  cursor: pointer;
+
+  p {
+    text-decoration: underline;
+  }
+}
+
+.homepage {
+  @include alignCenter();
+  flex-direction: column;
+}
+
+.homepage__logo {
+  @include bigLogo();
+  margin: $base 0 $half-base 0;
+}
+
+.homepage__tagline {
+  font-family: $decorative-font;
+  color: $dark-red;
+  font-size: $h2-size;
+  text-align: right;
+  margin: $half-base 0 $base 0;
+}
+
+.header {
+  color: $default-red;
+  font-family: $decorative-font;
+  font-size: $h1-size;
+  cursor: pointer;
+  margin-bottom: $tiny;
+}
+
+.menu-link {
+  @include menuLink;
+}
+
+.login-options {
+  flex-direction: column;
+  @include alignCenter();
+}
+
+.login-options__login {
+  margin-bottom: $half-base;
+}
+
+.login-options__register {
+  margin-top: 0.5 * $base;
+  text-transform: uppercase;
+}
+
+.return-link {
+  text-decoration: underline;
+  color: $font-color;
+}
+
+.main-logo-container {
+  @include alignCenter();
+
+  .main-logo {
+    @include bigLogo();
+  }
+}
+
+// ABOUT pages
+
+.about-dish__heading {
+  color: $font-color;
+  font-family: $decorative-font;
+  font-size: $h3-size;
+}
+
+.about-dish__intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: $base;
+}
+
+.about-dish__logo {
+  @include smallLogo();
+}
+
+.about-dish__heading {
+  font-size: $h3-size;
+  font-family: $decorative-font;
+}
+
+.about-dish__logo {
+  @include smallLogo();
+}
+
+.about-dish__description {
+  padding-bottom: $base;
+  font-size: $h4-size;
+}
+
+.fa-arrow-left {
+  padding-right: $tiny;
+}
+
+//MAIN PAGE
+
+.main-menu {
+  @include alignCenter();
+  flex-direction: column;
+  margin: $base 0;
+}
+
+details {
+  flex-direction: column;
+}
+
+.main-menu__options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-menu__options li {
+  margin: $small 0;
+}
+
+summary {
+  @include redButton();
+  width: 60vw;
+  text-align: center;
+  line-height: 40px;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.food-options {
+  margin-bottom: 110px;
+}
+
+.food-options[open] {
+  margin-bottom: 0;
+}
+
+// CREATE FORM PAGE
+.add-form {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    @include userInput();
+    min-height: 45px;
+    margin-bottom: $small;
+  }
+}
+
+.fa-utensils {
+  color: $default-red;
+  padding-right: $tiny;
+}
+
+.create-header {
+  font-size: $h3-size;
+  margin-bottom: $small;
+}
+
+.form-input-labels {
+  font-size: $h4-size;
+}
+
+.required-asterisk {
+  color: $default-red;
+}
+
+.dietary-info,
+.allergies-info,
+.servings-info,
+.cooked-info,
+.collection-info,
+.location-info,
+.additional-info,
+.spiciness-info {
+  @include userInput();
+  font-family: $system-font;
+  font-size: $regular-size;
+  margin-bottom: $small;
+}
+
+.preference {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: $tiny / 2;
+}
+
+.checkbox {
+  background-color: yellow;
+  height: $base;
+  width: $base;
+}
+
+.post-item {
+  @include alignCenter();
+
+  &__button {
+    @include redButton;
+  }
+}
+
+.red-button {
+  @include redButton();
+}
+
+//
+
+.red-file-upload-button {
+  @include redFileUploadButton;
+  width: 100%;
+  height: 272px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// DISH PAGE - Sam
+
+.dietary-info ul,
+.item-info__info__servings {
+  width: 100%;
+  display: flex;
+}
+
+.dietary-info ul li,
+.item-info__info__servings li {
+  margin: 0 0.25em;
+}
+
+.item-info {
+  width: 100%;
+}
+
+.item-info__name {
+  font-family: $decorative-font;
+  font-size: $h2-size;
+}
+
+.item-info__image {
+  margin-left: calc(#{-$base} + 0.5px);
+  width: calc(100% + #{2 * $base} - 1px);
+}
+
+.item-info__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5em;
+}
+
+.item-info__info,
+.dietary-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.25em;
+}
+
+.item-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+// LISTINGS PAGE
+.add-item {
+  color: $accent-green;
+  font-family: $system-font;
+
+  i {
+    font-size: $h3-size;
+    margin-bottom: $small;
+  }
+}
+
+.card {
+  &__image img {
+    margin-left: calc(#{-$base} + 0.5px);
+    width: calc(100% + #{2 * $base} - 1px);
+  }
+
+  &__image {
+    position: relative;
+  }
+
+  &__info {
+    margin-left: calc(#{-$small} + 0.5px);
+    width: calc(100% + #{$tiny});
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: $tiny;
+    padding-left: $small;
+    height: $base;
+    font-family: $decorative-font;
+    font-size: $h3-size;
+    background-color: $opaque-grey;
+  }
+
+  &__teaser {
+    margin-left: -$tiny;
+    color: $font-color-light;
+  }
+
+  &__options {
+    text-align: center;
+    padding-bottom: $small;
+
+    a {
+      color: $accent-gold;
+      text-decoration: underline;
+    }
+  }
+}
+
+// SUCCESS pages
+
+.success-card {
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+  background-size: cover;
+}
+
+.success-title {
+  color: $font-color-light;
+  padding-left: $half-base;
+  font-size: $h2-size;
+}
+
+.success-card__message {
+  font-size: $h3-size;
+}
+
+.success-card__dish {
+  font-family: $decorative-font;
+  font-size: $h1-size;
+}
+
+.success-card__chef {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.success-card__chef-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  // padding: 0 $base;
+}
+
+.success-card__image {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.success-card__info {
+  // padding: $base;
+  width: 100%;
+  height: 100%;
+  background: white;
+  background:rgba(255,255,255,0.7);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+//404 page
+
+.error {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: $large;
+
+  &__logo {
+    @include smallLogo();
+  }
+
+  &__num {
+    font-family: $decorative-font;
+    font-size: $h2-size;
+    color: $dark-red;
+  }
+}

@@ -1,0 +1,126 @@
+<h2 class="create-header"><i class="fas fa-utensils"></i>Create a {{ item }}</h2>
+
+<form action="{{ item }}-add" method="post">
+  <div class="img-placeholder">
+  </div>
+
+  <label for="imgUrl" class="form-input-labels">Image URL<sup class="required-asterisk">*</sup></label>
+  <input class="add-form__input" type="text" name="imgUrl" id="imgUrl" required>
+
+  <label for="title" class="form-input-labels">Name your {{ item }}<sup class="required-asterisk">*</sup></label>
+  <input class="add-form__input" type="text" name="title" id="title" required>
+
+  {{#if (compare item 'dish')}}
+
+  <label for="teaser" class="form-input-labels">Write a one-liner about your dish<sup
+      class="required-asterisk">*</sup></label>
+  <input class="add-form__input" type="text" name="teaser" id="teaser" required>
+
+  <label for="spiciness" class="form-input-labels">Spiciness</label>
+  <select class="add-form__input spiciness-info" name="spiciness" id="spiciness" required>
+    <option value="">--Select spiciness--</option>
+    <option value="0">Not spicy</option>
+    <option value="1">Mild</option>
+    <option value="2">Medium</option>
+    <option value="3">Spicy</option>
+  </select>
+
+
+  <h3 class="form-input-labels">Dietary information</h3>
+  <div class="dietary-info">
+    <div class="preference">
+      <label class="form-input-labels__dietary" for="vegetarian">Vegetarian</label>
+      <input class="checkbox" type="checkbox" name="vegetarian" id="vegetarian" value=1>
+    </div>
+    <div class="preference">
+      <label for="vegan">Vegan</label>
+      <input class="checkbox" type="checkbox" name="vegan" id="vegan" value="1">
+    </div>
+    <div class="preference">
+      <label for="gluten-free">Gluten Free</label>
+      <input class="checkbox" type="checkbox" name="glutenFree" id="gluten-free" value="1">
+    </div>
+    <div class="preference">
+      <label for="halal">Halal</label>
+      <input class="checkbox" type="checkbox" name="halal" id="halal" value="1">
+    </div>
+    <div class="preference">
+      <label for="kosher">Kosher</label>
+      <input class="checkbox" type="checkbox" name="kosher" id="kosher" value="1">
+    </div>
+  </div>
+
+  <h3 class="form-input-labels">Contains:</h3>
+  <div class="allergies-info">
+    <div class="preference">
+      <label for="nuts">Nuts</label>
+      <input class="checkbox" type="checkbox" name="nuts" id="nuts" value="1">
+    </div>
+
+    <div class="preference">
+      <label for="shellfish">Shellfish</label>
+      <input class="checkbox" type="checkbox" name="shellfish" id="shellfish" value="1">
+    </div>
+
+    <div class="preference">
+      <label for="dairy">Dairy</label>
+      <input class="checkbox" type="checkbox" name="dairy" id="dairy" value="1">
+    </div>
+  </div>
+
+  <label for="servings" class="form-input-labels">Servings</label>
+  <select name="servings" id="servings" class='servings-info' required>
+    <option value="">--Select number of servings--</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    <option value="4">Four</option>
+    <option value="5">Five</option>
+  </select>
+
+  <label for="cooked" class="form-input-labels">Cooked</label>
+  <input class='cooked-info' type="date" name="cooked" id="cooked" value="" min="2019-01-01">
+
+  <label for="collection" class="form-input-labels">Collection time</label>
+  <input class='collection-info' type="datetime-local" name="collection" id="collection" min="2019-01-01T00:00">
+
+  <label for="location" class="form-input-labels">Collection location</label>
+  <input class='location-info' type="text" name="location" id="location" required>
+
+  <label for="additional" class="form-input-labels">Additional Info</label>
+  <textarea class='additional-info' name="additional" id="additional" rows="5" required></textarea>
+
+  {{else}}
+
+
+  <label for="description">Describe your community</label>
+  <textarea class="add-form__input" name="description" id="description" rows="8" required></textarea>
+
+  <label for="borough">Where is your community?<sup class="required-asterisk">*</sup></label>
+  <select class="add-form__input" name="borough" id="borough" required>
+    <option value="">--Please select borough--</option>
+    <option value="">Robersham</option>
+    <option value="">Meredale</option>
+    <option value="">Mondeor</option>
+    <option value="">Winchester</option>
+    <option value="">Ormonde</option>
+    <option value="">Oakdene</option>
+    <option value="">Glenvista</option>
+    <option value="">Kibblerpar</option>
+    <option value="">Naturena</option>
+    <option value="">Rosebank</option>
+    <option value="">Noorwood</option>
+    <option value="">Cresta</option>
+    <option value="">Randburg</option>
+    <option value="">Westcliff</option>
+    <option value="">Parktown</option>
+    <option value="">Kesington</option>
+    <option value="">City Of Johannesburg</option>
+  </select>
+
+  {{/if}}
+
+  <div class='post-item'>
+    <button type="submit" class='post-item__button'>Create</button>
+  </div>
+</form>

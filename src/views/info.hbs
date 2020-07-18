@@ -1,0 +1,84 @@
+{{#each data}}
+<div class="item-info">
+  <img class="item-info__image" src={{this.image}}>
+
+  <section class="item-info__container">
+
+
+
+    <h3 class="item-info__name">{{this.name}}</h3>
+
+
+
+    <p class="item-info__teaser">{{this.teaser}}</p>
+    <p class="item-info__user">{{this.user}}</p>
+
+    {{#if (compare ../item 'dish')}}
+    {{> dietary-info this}}
+    {{/if}}
+
+    {{#if (compare ../item 'dish')}}
+    <div class="item-info__info">
+      {{!-- <p class="item-info__info__servings">Servings: {{this.portions}}</p> --}}
+      <ul class="item-info__info__servings">Servings left:
+        {{#if (compare portions_remaining 0)}}
+        <li>sorry, it's all snapped up!</li>
+        {{/if}}
+        {{#if (greaterThanEqualTo portions_remaining 1)}}
+        <li>🍽</li>
+        {{/if}}
+        {{#if (greaterThanEqualTo portions_remaining 2)}}
+        <li>🍽</li>
+        {{/if}}
+        {{#if (greaterThanEqualTo portions_remaining 3)}}
+        <li>🍽</li>
+        {{/if}}
+      </ul>
+      <p class="success-card__collection-time">Collect: {{collect this.collection_time }}</p>
+      <p class="item-info__info__cooked">Cooked: {{cooked this.date_cooked}}</p>
+      <p class="item-info__info__description">{{this.description}}</p>
+    </div>
+    {{/if}}
+
+    {{#if (compare ../item 'community')}}
+    <div class="item-info__info">
+      <p class="item-info__info__location">Location: {{this.location}}</p>
+      <p class="item-info__info__description">{{this.description}}</p>
+    </div>
+    {{/if}}
+</div>
+
+</section>
+
+<form class='item-form' method="POST" action="/{{../item}}-action">
+  {{!-- <label class='item-form__name' for="item-form__name">Please give your name:
+    <input id='item-form__name' type="text" required>
+  </label> --}}
+
+  {{#if (compare ../item 'dish')}}
+  <input type="hidden" value="{{this.id}}" name="dishID">
+  <input type="hidden" value="{{this.creatorid}}" name='creatorID'>
+  <input type="hidden" value="{{this.communityid}}" name='communityID'>
+
+
+  {{/if}}
+  {{#if (compare ../item 'community')}}
+  <input type="hidden" value="{{this.id}}" name="communityID">
+  <input type="hidden" value="{{this.adminid}}" name="adminID">
+  {{/if}}
+
+
+
+  <button class="red-button" action="submit">
+    {{#if (compare ../item 'dish')}}
+    Claim
+    {{/if}}
+
+    {{#if (compare ../item 'community')}}
+    Join
+    {{/if}}
+  </button>
+</form>
+{{else}}
+<h3>Sorry, there seems to be nothing here.</h3>
+{{/each}}

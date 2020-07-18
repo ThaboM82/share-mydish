@@ -1,0 +1,13 @@
+<a href="/{{ this.item }}-add" class="add-item"><i class="fas fa-plus-circle"> </i>
+    Add your own
+</a>
+
+<ul>
+    {{#each data}}
+    <li>
+        {{> card info=this item=../item}}
+    </li>
+    {{else}}
+    <h3>Sorry, there seems to be nothing here.</h3>
+    {{/each}}
+</ul>
